@@ -1,8 +1,8 @@
-const HTTPS = require('https');
-const botID = process.env.BOT_ID;
+var HTTPS = require('https');
+var botID = process.env.BOT_ID;
 
 function respond() {
-  let request = JSON.parse(this.req.chunks[0]),
+  var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/ruphiro$/;
 
   if(request.text && botRegex.test(request.text)) {
@@ -17,8 +17,8 @@ function respond() {
 }
 
 function postMessage() {
-  const botResponse = 'Yes Sir!'
-  let options, body, botReq;
+  var botResponse = 'Yes Sir!'
+  var options, body, botReq;
 
 
   options = {
