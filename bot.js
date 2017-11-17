@@ -3,24 +3,29 @@ var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 
 function respond() {
-  var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/ruphiro$/;
+  var request = JSON.parse(this.req.chunks[0])
+  var greetingRegex = /^\/ruphiro$/;
+  var expRegex = /^\/ruphiro exp$/;
 
-  if(request.text && botRegex.test(request.text)) {
-    this.res.writeHead(200);
-    postMessage();
-    this.res.end();
+  if(request.text && greetingRegex.test(request.text.toLowerCase())) {
+    postMessage('greeting');
+  } else if(request.text && expRegex.test(request.text.toLowerCase())) {
+    postMessage('exp')
   } else {
     console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
   }
+  this.res.writeHead(200);
+  this.res.end();
 }
 
-function postMessage() {
+function postMessage(type) {
   var botResponse, options, body, botReq;
 
-  botResponse = 'Yes Sir!';
+  if(type=='greeting'){
+    botResponse = 'Yes Sir!';
+  } else if(type === 'exp'){
+    botResponse = 'Fetching that Sir!'
+  }
 
   options = {
     hostname: 'api.groupme.com',
