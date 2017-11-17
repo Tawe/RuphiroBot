@@ -1,28 +1,30 @@
-const http = require('http');
-const express = require('express')
-const app = express();
-// const director = require('director');
-const bot = require('./bot.js');
+var http, director, bot, router, server, port;
 
-app.use((request, response, next) => {
-  console.log(request.headers)
-  next()
-})
+http        = require('http');
+director    = require('director');
+bot         = require('./bot.js');
 
-app.use((request, response, next) => {
-  request.chance = Math.random()
-  next()
-})
+router = new director.http.Router({
+  '/' : {
+    post: bot.respond,
+    get: ping
+  }
+});
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
-  bot.respond(req, res);
+server = http.createServer(function (req, res) {
+  req.chunks = [];
+  req.on('data', function (chunk) {
+    req.chunks.push(chunk.toString());
+  });
 
- })
+  router.dispatch(req, res, function(err) {
+    res.writeHead(err.status, {"Content-Type": "text/plain"});
+    res.end(err.message);
+  });
+});
 
-app.listen(5000, () => {
-  console.log('listening on 3000')
-})
+port = Number(process.env.PORT || 5000);
+server.listen(port);
 
 function ping() {
   this.res.writeHead(200);
