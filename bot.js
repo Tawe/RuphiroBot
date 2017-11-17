@@ -1,16 +1,13 @@
-var HTTPS = require('https');
-
-var botID = process.env.BOT_ID;
+const HTTPS = require('https');
+const botID = process.env.BOT_ID;
 
 function respond() {
-  var request = JSON.parse(this.req.chunks[0])
-  var greetingRegex = /^\/ruphiro$/;
-  var expRegex = /^\/ruphiro exp$/;
+  let request = JSON.parse(this.req.chunks[0])
+  const regex = /\/ruphiro/g;
 
-  if(request.text && greetingRegex.test(request.text.toLowerCase())) {
-    postMessage('greeting');
-  } else if(request.text && expRegex.test(request.text.toLowerCase())) {
-    postMessage('exp')
+  if(request.text && regex.test(request.text.toLowerCase())) {
+    let command = request.text.split(' ')
+    postMessage(command[1]);
   } else {
     console.log("don't care");
   }
@@ -19,12 +16,14 @@ function respond() {
 }
 
 function postMessage(type) {
-  var botResponse, options, body, botReq;
+  let botResponse, options, body, botReq;
 
   if(type=='greeting'){
     botResponse = 'Yes Sir!';
   } else if(type === 'exp'){
     botResponse = 'Fetching that Sir!'
+  } else if(type === 'location'){
+    botResponse === 'The Group is in Bitterbridge';
   }
 
   options = {
