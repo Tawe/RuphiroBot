@@ -17,26 +17,25 @@ HTTPS.get(url, function(res){
 });
 
 function respond() {
-  var request = JSON.parse(this.req.chunks[0])
-  // var strArr = [];
-  // if(request.text){
-  //   strArr = request.text.split(' ');
-  // }
-  // if(request.text  && strArr[0] == '/ruphiro') {
+  var request = JSON.parse(this.req.chunks[0]),
+      botRegex = /^\/cool guy$/;
+
+  if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
-  // } else {
-    // console.log("don't care");
-    // this.res.writeHead(200);
-    // this.res.end();
+  } else {
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
   }
 }
 
 function postMessage() {
-  var botResponse, options, body, botReq; 
-  var data = JSON.parse(campaignData);
-  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
+  var botResponse, options, body, botReq;
+  var data = JSON.parse(campaignData) 
+  botResponse = data.dragonsDemand.groupExp;
+
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -66,6 +65,5 @@ function postMessage() {
   });
   botReq.end(JSON.stringify(body));
 }
-
 
 exports.respond = respond;
