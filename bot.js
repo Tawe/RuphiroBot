@@ -18,11 +18,11 @@ HTTPS.get(url, function(res){
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/ruphiro exp$/;
+      botRegex = /^\/ruphiro /g;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    postMessage(request.text);
     this.res.end();
   } else {
     console.log("don't care");
@@ -31,10 +31,11 @@ function respond() {
   }
 }
 
-function postMessage() {
+function postMessage(text) {
   var botResponse, options, body, botReq; 
   var data = JSON.parse(campaignData);
-  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each!';
+  var textArr = text.split(' ';)
+  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ' + text[1];
 
   options = {
     hostname: 'api.groupme.com',
