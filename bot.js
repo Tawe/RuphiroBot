@@ -1,6 +1,8 @@
 const HTTPS = require('https');
 const botID = process.env.BOT_ID;
-
+const data = ffetch('./data/data.json').then(function(response) {
+  return response.blob();
+})
 function respond() {
   let request = JSON.parse(this.req.chunks[0])
   const regex = /\/ruphiro/g;
@@ -21,7 +23,8 @@ function postMessage(type) {
   if(type=='greeting'){
     botResponse = 'Yes Sir!';
   } else if(type === 'exp'){
-    botResponse = 'Fetching that Sir!'
+    botResponse = data.Dragons_demand.gropExp;
+  
   } else if(type === 'location'){
     botResponse === 'The Group is in Bitterbridge';
   }
