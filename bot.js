@@ -22,7 +22,7 @@ function respond() {
 
   if(request.text && request.text.startsWith("/ruphiro")) {
     this.res.writeHead(200);
-    postMessage(request.text);
+    postMessage();
     this.res.end();
   } else {
     console.log("don't care");
@@ -31,11 +31,10 @@ function respond() {
   }
 }
 
-function postMessage(text) {
+function postMessage() {
   var botResponse, options, body, botReq; 
   var data = JSON.parse(campaignData);
-  var textArr = text.split(' ');
-  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ' + text[1];
+  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
 
   options = {
     hostname: 'api.groupme.com',
