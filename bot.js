@@ -30,9 +30,9 @@ function respond() {
   // }
 }
 
-function postMessage(copy)) {
+function postMessage(copy) {
   var botResponse, options, body, botReq; 
-  var data = JSON.parse(campaignData);
+  // var data = JSON.parse(campaignData);
   // botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
   botResponse = copy;
   options = {
