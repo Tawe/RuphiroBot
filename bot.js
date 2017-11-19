@@ -6,7 +6,6 @@ fetch('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json')
   .then(res => res.text())
   .then(body => {
     data = JSON.parse(body);
-    console.log(data.dragonsDemand.groupExp)
   });
 
 function respond() {
@@ -68,8 +67,9 @@ function postMessage(type) {
 function handleExp(){
   let groupExp = data.dragonsDemand.groupExp;
   
-
-  return `The Personal Exp of the group is currently ${groupexp}`;
+  return "The Personal Exp of the group is currently " + groupExp;
 }
 
 exports.respond = respond;
+
+exports.handleExp = handleExp;

@@ -28,5 +28,6 @@ server.listen(port);
 
 function ping() {
   this.res.writeHead(200);
-  this.res.end("Hey, I'm Cool Guy.");
+  this.res.end('YO!');
+  // this.res.end(bot.handleExp());
 }
