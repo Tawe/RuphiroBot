@@ -10,11 +10,11 @@ fetch('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json')
 
 function respond() {
   let request = JSON.parse(this.req.chunks[0])
-  const regex = /^\/ruphiro exp$/;
+  let regex = /^\/ruphiro exp$/;
 
   if(request.text && regex.test(request.text.toLowerCase())) {
-    let command = request.text.split(' ')
-    postMessage('exp');
+    // let command = request.text.split(' ')
+    postMessage();
   } else {
     console.log("don't care");
   }
@@ -25,14 +25,14 @@ function respond() {
 function postMessage(type) {
   let botResponse, options, body, botReq;
 
-  if(type=='greeting'){
-    botResponse = 'Yes Sir!';
-  } else if(type === 'exp'){
+  // if(type=='greeting'){
+    // botResponse = 'Yes Sir!';
+  // } else if(type === 'exp'){
     botResponse = handleExp();
-  
-  } else if(type === 'location'){
-    botResponse === 'The Group is in Bitterbridge';
-  }
+  // 
+  // } else if(type === 'location'){
+    // botResponse === 'The Group is in Bitterbridge';
+  // }
 
   options = {
     hostname: 'api.groupme.com',
@@ -71,5 +71,3 @@ function handleExp(){
 }
 
 exports.respond = respond;
-
-exports.handleExp = handleExp;
