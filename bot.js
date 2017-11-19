@@ -19,22 +19,21 @@ HTTPS.get(url, function(res){
 function respond() {
   var request = JSON.parse(this.req.chunks[0])
 
-  // if(request.text && request.text.startsWith("/ruphiro")) {
+  if(request.text && request.text.startsWith("/ruphiro")) {
     this.res.writeHead(200);
     postMessage(request.text);
     this.res.end();
   // } else {
-  //   console.log("don't care");
-  //   this.res.writeHead(200);
-  //   this.res.end();
-  // }
+    console.log("don't care");
+    this.res.writeHead(200);
+    this.res.end();
+  }
 }
 
 function postMessage(copy) {
   var botResponse, options, body, botReq; 
-  // var data = JSON.parse(campaignData);
-  // botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
-  botResponse = copy;
+  var data = JSON.parse(campaignData);
+  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -66,13 +65,4 @@ function postMessage(copy) {
 }
 
 
-function mock(mockData){
-  if(mockData.text && mockData.text.startsWith("/ruphiro")) {
-    var data = JSON.parse(campaignData);
-    botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
-    return botResponse;
-  } 
-}
-
 exports.respond = respond;
-exports.mock = mock;

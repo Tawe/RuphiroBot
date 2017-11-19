@@ -28,5 +28,5 @@ server.listen(port);
 
 function ping() {
   this.res.writeHead(200);
-  this.res.end(bot.mock({text:"/ruphiro"}));
+  this.res.end("Hey, I'm Cool Guy.");
 }
