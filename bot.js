@@ -1,8 +1,11 @@
 const HTTPS = require('https');
+const fetch = require('node-fetch');
 const botID = process.env.BOT_ID;
-const data = ffetch('./data/data.json').then(function(response) {
-  return response.blob();
-})
+const data = fetch('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json')
+  .then(res => res.text())
+  .then(body => console.log(body));
+
+console.log(data);
 function respond() {
   let request = JSON.parse(this.req.chunks[0])
   const regex = /\/ruphiro/g;

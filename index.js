@@ -23,7 +23,7 @@ server = http.createServer(function (req, res) {
   });
 });
 
-port = Number(process.env.PORT || 6000);
+port = Number(process.env.PORT || 8000);
 server.listen(port);
 
 function ping() {
