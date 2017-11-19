@@ -9,10 +9,10 @@ const botID = process.env.BOT_ID;
 //   });
 
 function respond() {
-  let request = JSON.parse(this.req.chunks[0])
-  let regex = /^\/ruphiro exp$/;
+  var request = JSON.parse(this.req.chunks[0])
+  var regex = /^\/ruphiro exp$/;
 
-  if(request.text && regex.test(request.text.toLowerCase())) {
+  if(request.text && regex.test(request.text.)) {
     // let command = request.text.split(' ')
     postMessage();
   } else {
