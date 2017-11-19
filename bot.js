@@ -34,7 +34,7 @@ function respond() {
 function postMessage(text) {
   var botResponse, options, body, botReq; 
   var data = JSON.parse(campaignData);
-  var textArr = text.split(' ';)
+  var textArr = text.split(' ');
   botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ' + text[1];
 
   options = {
