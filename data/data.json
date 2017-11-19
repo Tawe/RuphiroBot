@@ -1,6 +1,6 @@
 {
-    "Dragons_demand":{
-        "exp":{
+    "dragonsDemand":{
+        "expPath":{
             "medium":{
                 "1":2000,
                 "2":5000,
@@ -24,7 +24,7 @@
             }
 
         },
-        "gropExp":66432
+        "groupExp":66432
 
     }
 }
