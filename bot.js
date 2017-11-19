@@ -1,12 +1,12 @@
 const HTTPS = require('https');
 const fetch = require('node-fetch');
 const botID = process.env.BOT_ID;
-let data = {};
-fetch('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json')
-  .then(res => res.text())
-  .then(body => {
-    data = JSON.parse(body);
-  });
+// let data = {};
+// fetch('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json')
+//   .then(res => res.text())
+//   .then(body => {
+//     data = JSON.parse(body);
+//   });
 
 function respond() {
   let request = JSON.parse(this.req.chunks[0])
@@ -28,7 +28,8 @@ function postMessage() {
   // if(type=='greeting'){
     // botResponse = 'Yes Sir!';
   // } else if(type === 'exp'){
-    botResponse = handleExp();
+    // botResponse = handleExp();
+    botResponse= 'huh?'
   // 
   // } else if(type === 'location'){
     // botResponse === 'The Group is in Bitterbridge';
@@ -64,10 +65,10 @@ function postMessage() {
   botReq.end(JSON.stringify(body));
 }
 
-function handleExp(){
-  let groupExp = data.dragonsDemand.groupExp;
+// function handleExp(){
+//   let groupExp = data.dragonsDemand.groupExp;
   
-  return "The Personal Exp of the group is currently " + groupExp;
-}
+//   return "The Personal Exp of the group is currently " + groupExp;
+// }
 
 exports.respond = respond;
