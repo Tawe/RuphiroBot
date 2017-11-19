@@ -1,25 +1,38 @@
-var HTTPS = require('https');
-var botID = process.env.BOT_ID;
+const HTTPS = require('https');
+const fetch = require('node-fetch');
+const botID = process.env.BOT_ID;
+let data = {};
+fetch('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json')
+  .then(res => res.text())
+  .then(body => {
+    data = JSON.parse(body);
+  });
 
 function respond() {
-  var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/;
+  let request = JSON.parse(this.req.chunks[0])
+  let regex = /^\/ruphiro exp$/;
 
-  if(request.text && botRegex.test(request.text)) {
-    this.res.writeHead(200);
+  if(request.text && regex.test(request.text.toLowerCase())) {
+    // let command = request.text.split(' ')
     postMessage();
-    this.res.end();
   } else {
     console.log("don't care");
-    this.res.writeHead(200);
-    this.res.end();
   }
+  this.res.writeHead(200);
+  this.res.end();
 }
 
 function postMessage() {
-  var botResponse, options, body, botReq;
+  let botResponse, options, body, botReq;
 
-  botResponse = 'Nice?';
+  // if(type=='greeting'){
+    // botResponse = 'Yes Sir!';
+  // } else if(type === 'exp'){
+    botResponse = handleExp();
+  // 
+  // } else if(type === 'location'){
+    // botResponse === 'The Group is in Bitterbridge';
+  // }
 
   options = {
     hostname: 'api.groupme.com',
@@ -51,5 +64,10 @@ function postMessage() {
   botReq.end(JSON.stringify(body));
 }
 
+function handleExp(){
+  let groupExp = data.dragonsDemand.groupExp;
+  
+  return "The Personal Exp of the group is currently " + groupExp;
+}
 
 exports.respond = respond;
