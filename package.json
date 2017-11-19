@@ -22,6 +22,7 @@
 	"dependencies": {
 		"director": "^1.2.8",
 		"express": "^4.16.2",
-		"node-fetch": "^1.7.3"
+		"node-fetch": "^1.7.3",
+		"simple-get": "^2.7.0"
 	}
 }
