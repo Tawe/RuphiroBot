@@ -18,13 +18,13 @@ HTTPS.get(url, function(res){
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0])
-  var strArr;
-  if(request.text){
-    strArr = request.text.split(' ');
-  }
+  // var strArr = [];
+  // if(request.text){
+  //   strArr = request.text.split(' ');
+  // }
   // if(request.text  && strArr[0] == '/ruphiro') {
     this.res.writeHead(200);
-    postMessage(strArr[1]);
+    postMessage();
     this.res.end();
   // } else {
     // console.log("don't care");
@@ -33,10 +33,10 @@ function respond() {
   }
 }
 
-function postMessage(copy) {
+function postMessage() {
   var botResponse, options, body, botReq; 
   var data = JSON.parse(campaignData);
-  botResponse = copy + 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
+  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each! ';
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
