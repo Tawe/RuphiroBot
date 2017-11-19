@@ -10,7 +10,7 @@ fetch('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json')
 
 function respond() {
   let request = JSON.parse(this.req.chunks[0])
-  const regex = /\/ruphiro/g;
+  const regex = /^\/ruphiro exp$/;
 
   if(request.text && regex.test(request.text.toLowerCase())) {
     let command = request.text.split(' ')
