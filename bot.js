@@ -14,7 +14,7 @@ function respond() {
 
   if(request.text && regex.test(request.text.toLowerCase())) {
     let command = request.text.split(' ')
-    postMessage(command[1]);
+    postMessage('exp');
   } else {
     console.log("don't care");
   }
