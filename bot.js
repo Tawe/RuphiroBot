@@ -20,7 +20,7 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/ruphiro\s/g;
 
-  if(request.text && botRegex.test(request.text)) {
+  if(request.text && request.text.startsWith("/ruphiro")) {
     this.res.writeHead(200);
     postMessage(request.text);
     this.res.end();
