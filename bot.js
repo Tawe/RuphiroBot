@@ -32,9 +32,9 @@ function respond() {
 }
 
 function postMessage() {
-  var botResponse, options, body, botReq;
-
-  botResponse = 'Works ' + JSON.parse(campaignData);
+  var botResponse, options, body, botReq; 
+  var data = JSON.parse(campaignData);
+  botResponse = 'Each party member currently has ' + data.dragonsDemand.groupExp + ' Each!';
 
   options = {
     hostname: 'api.groupme.com',
