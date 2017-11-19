@@ -1,28 +1,10 @@
 var HTTPS = require('https');
-var get = require('simple-get')
+
 var botID = process.env.BOT_ID;
-// var data;
-
-// HTTPS.get('https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json', function(res){
-//     var body = '';
-
-//     res.on('data', function(chunk){
-//         body += chunk;
-//     });
-
-//     res.on('end', function(){
-//         var response = body;
-//         console.log("Got a response: ", response);
-//         setData(response);
-//     });
-// }).on('error', function(e){
-//       console.log("Got an error: ", e);
-// });
-
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/ruphiro$/;
+      botRegex = /^\/ruphiro exp$/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -38,7 +20,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
 
-  botResponse = 'Huh?';
+  botResponse = 'Works';
 
   options = {
     hostname: 'api.groupme.com',
@@ -69,7 +51,6 @@ function postMessage() {
   });
   botReq.end(JSON.stringify(body));
 }
-
 
 
 exports.respond = respond;
