@@ -34,7 +34,7 @@ function respond() {
 function postMessage() {
   var botResponse, options, body, botReq;
   var data = JSON.parse(campaignData)  
-  botResponse = 'Sigh ',data.dragonsDemand;
+  botResponse = 'Sigh '+ data.dragonsDemand;
 
   options = {
     hostname: 'api.groupme.com',
