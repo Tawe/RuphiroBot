@@ -73,13 +73,13 @@ function postMessage(copy) {
 }
 
 function handleExp(){
-  const data = JSON.parse(campaignData);
-  const currentExp = data.dragonsDemand.groupExp;
-  const levelExp = data.dragonsDemand.expPath.medium;
-  let currentLevel = 0;
-  let maxExp = 0;
+  var data = JSON.parse(campaignData);
+  var currentExp = data.dragonsDemand.groupExp;
+  var levelExp = data.dragonsDemand.expPath.medium;
+  var currentLevel = 0;
+  var maxExp = 0;
 
-  for(let i = 0; i<levelExp.length; i++){
+  for(var i = 0; i<levelExp.length; i++){
     if(levelExp[i] > currentExp){
         currentLevel = i;
         maxExp = levelExp[i];
@@ -87,9 +87,9 @@ function handleExp(){
     }
   }
 
-  const expDiff = maxExp - currentExp;
+  var expDiff = maxExp - currentExp;
 
-  return `The party is currently level ${currentLevel}, and each party memeber has ${currentExp}xp. Which puts them ${expDiff}xp away from their next level.`;
+  return "The party is currently level "+ currentLevel+", and each party memeber has "+currentExp +"xp. Which puts them "+expDiff+"xp away from their next level.";
 }
 
 exports.respond = respond;
