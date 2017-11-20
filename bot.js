@@ -39,6 +39,8 @@ function postMessage(copy) {
   // var data = JSON.parse(campaignData)  
   if(copy == 'exp'){
     botResponse = handleExp()
+  } else if(copy == 'location'){
+    botResponse = handleLocation();
   }
   // botResponse = 'Sigh '+ data.dragonsDemand.groupExp +' '+copy;
 
@@ -89,7 +91,12 @@ function handleExp(){
 
   var expDiff = maxExp - currentExp;
 
-  return "The party is currently level "+ currentLevel+", and each party memeber has "+currentExp +"xp. Which puts them "+expDiff+"xp away from their next level.";
+  return "The party is currently level "+ currentLevel+", and each party memeber has "+currentExp +"xp. Which puts them "+expDiff+"xp away from their next level!";
 }
 
+function handleLocation(){
+  var data = JSON.parse(campaignData);
+  var location = data.dragonsDemand.location;
+  return 'The party is currently located in ' + location;
+}
 exports.respond = respond;
