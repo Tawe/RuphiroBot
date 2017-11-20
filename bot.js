@@ -23,7 +23,7 @@ function respond() {
       botRegex = /^\/cool guy$/;
 
   if(request.text && botRegex.test(request.text)) {
-    strArr =request.text;
+    strArr =request.text.split(' ');
     this.res.writeHead(200);
     postMessage(strArr[1]);
     this.res.end();
