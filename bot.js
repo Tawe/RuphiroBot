@@ -1,7 +1,9 @@
 var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var campaignData;
+var strArr = [];
 var url = 'https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json';
+
 HTTPS.get(url, function(res){
     var body = '';
 
@@ -21,8 +23,9 @@ function respond() {
       botRegex = /^\/cool guy$/;
 
   if(request.text && botRegex.test(request.text)) {
+    strArr =request.text;
     this.res.writeHead(200);
-    postMessage();
+    postMessage(strArr[1]);
     this.res.end();
   } else {
     console.log("don't care");
@@ -31,10 +34,10 @@ function respond() {
   }
 }
 
-function postMessage() {
+function postMessage(copy) {
   var botResponse, options, body, botReq;
   var data = JSON.parse(campaignData)  
-  botResponse = 'Sigh '+ data.dragonsDemand.groupExp;
+  botResponse = 'Sigh '+ data.dragonsDemand.groupExp +' '+copy;
 
   options = {
     hostname: 'api.groupme.com',
