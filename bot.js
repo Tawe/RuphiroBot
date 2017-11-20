@@ -36,8 +36,11 @@ function respond() {
 
 function postMessage(copy) {
   var botResponse, options, body, botReq;
-  var data = JSON.parse(campaignData)  
-  botResponse = 'Sigh '+ data.dragonsDemand.groupExp +' '+copy;
+  // var data = JSON.parse(campaignData)  
+  if(copy == 'exp'){
+    botResponse = handleExp()
+  }
+  // botResponse = 'Sigh '+ data.dragonsDemand.groupExp +' '+copy;
 
   options = {
     hostname: 'api.groupme.com',
@@ -67,6 +70,11 @@ function postMessage(copy) {
     console.log('timeout posting message '  + JSON.stringify(err));
   });
   botReq.end(JSON.stringify(body));
+}
+
+function handleExp(){
+  var data = JSON.parse(campaignData);
+  return 'Each party member currently has ' + data.dragonsDemand.groupExp+ '!'
 }
 
 exports.respond = respond;
