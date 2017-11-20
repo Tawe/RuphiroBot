@@ -89,7 +89,7 @@ function handleExp(){
 
   const expDiff = maxExp - currentExp;
 
-  return `The party's current level is ${currentLevel}, each party memeber has ${groupExp}. Which puts them ${expDiff} away from their next level.`;
+  return `The party is currently level ${currentLevel}, and each party memeber has ${currentExp}xp. Which puts them ${expDiff}xp away from their next level.`;
 }
 
 exports.respond = respond;
