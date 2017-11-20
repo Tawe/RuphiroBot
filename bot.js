@@ -2,19 +2,19 @@ var HTTPS = require('https');
 var botID = process.env.BOT_ID;
 var campaignData;
 var url = 'https://raw.githubusercontent.com/Tawe/RuphiroBot/master/data/data.json';
-// HTTPS.get(url, function(res){
-//     var body = '';
+HTTPS.get(url, function(res){
+    var body = '';
 
-//     res.on('data', function(chunk){
-//         body += chunk;
-//     });
+    res.on('data', function(chunk){
+        body += chunk;
+    });
 
-//     res.on('end', function(){
-//         campaignData = body;
-//     });
-// }).on('error', function(e){
-//       console.log("Got an error: ", e);
-// });
+    res.on('end', function(){
+        campaignData = body;
+    });
+}).on('error', function(e){
+      console.log("Got an error: ", e);
+});
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -33,8 +33,8 @@ function respond() {
 
 function postMessage() {
   var botResponse, options, body, botReq;
-  // var data = JSON.parse(campaignData) 
-  botResponse = 'Sigh';
+  var data = JSON.parse(campaignData)  
+  botResponse = 'Sigh ',data.dragonsDemand;
 
   options = {
     hostname: 'api.groupme.com',
