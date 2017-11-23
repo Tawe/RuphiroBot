@@ -44,13 +44,13 @@ function postMessage(copy) {
   } else if (copy == "plus") {
     botResponse = handlePlus();
   } else if (copy == "spoons") {
-    handleSpoons();
+    botResponse = handleSpoons();
   } else if (copy == "efreet") {
-    handleEfreet();
+    botResponse = handleEfreet();
   } else if (copy == "daven") {
-    handleDaven();
+    botResponse = handleDaven();
   } else if (copy == "fruben") {
-    handleFruben();
+    botResponse = handleFruben();
   }
   options = {
     hostname: "api.groupme.com",
