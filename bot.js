@@ -43,8 +43,15 @@ function postMessage(copy) {
     botResponse = handleLocation();
   } else if (copy == "plus") {
     botResponse = handlePlus();
+  } else if (copy == "spoons") {
+    handleSpoons();
+  } else if (copy == "efreet") {
+    handleEfreet();
+  } else if (copy == "daven") {
+    handleDaven();
+  } else if (copy == "fruben") {
+    handleFruben();
   }
-
   options = {
     hostname: "api.groupme.com",
     path: "/v3/bots/post",
@@ -110,6 +117,22 @@ function handleLocation() {
 
 function handlePlus() {
   return "Ummm what should I sing ?";
+}
+
+function handleSpoons() {
+  return "Oh, Yes Spoons! I wonder if he would want to start a band";
+}
+
+function handleEfreet() {
+  return "The Dragonslayer and more importantly my best friend. We have been through thick and thin!";
+}
+
+function handleDaven() {
+  return "Ah Sir Daven, He my seem cold at first but he is truely a kind person";
+}
+
+function handleFruben() {
+  return "Oh the tracker Fruben? I heard he killed a wolf once!";
 }
 
 exports.respond = respond;
